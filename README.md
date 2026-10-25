@@ -1,27 +1,66 @@
-# MyAngularProject
+# Employee Angular (MyAngularProject)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6.
+Angular 17 practice project using standalone components, routing and server-side rendering (SSR). It contains simple Home, About, Contact, Login and "My practice" pages, and a small in-memory service (`FakeApiServiceService`) that returns sample data as RxJS observables.
 
-## Development server
+## Tech stack
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Angular 17 (standalone components) with `@angular/ssr` (Express server in `server.ts`)
+- TypeScript, Bootstrap 5
 
-## Code scaffolding
+## Folder structure
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```text
+Employee-Angular/
+├── .vscode/
+├── src/
+│   ├── app/
+│   │   ├── about/
+│   │   ├── contact/
+│   │   ├── home/
+│   │   ├── login/
+│   │   └── my-practice/
+│   ├── assets/
+│   ├── index.html
+│   └── main.ts
+├── .editorconfig
+├── .gitignore
+├── angular.json
+├── package-lock.json
+├── package.json
+├── README.md
+├── server.ts
+├── tsconfig.app.json
+├── tsconfig.json
+└── tsconfig.spec.json
+```
 
-## Build
+| Path | Purpose |
+| --- | --- |
+| `src/app/home`, `about`, `contact`, `login`, `my-practice` | Page components |
+| `src/app/app.routes.ts` | Routes (`/home-componant`, `/about-componant`, `/contact-componant`, `/login-componant`, `/my-practice`) |
+| `src/app/fake-api-service.service.ts` | Sample data service |
+| `server.ts`, `src/main.server.ts`, `src/app/app.config.server.ts` | SSR set-up |
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Prerequisites
 
-## Running unit tests
+- Node.js 18.13+ or 20.9+ (supported by Angular 17) and npm
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Running locally
 
-## Running end-to-end tests
+```bash
+npm install
+npm start                          # ng serve → http://localhost:4200
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Build and SSR
 
-## Further help
+```bash
+npm run build                      # output in dist/my-angular-project
+npm run serve:ssr:my-angular-project   # serves the SSR build with Node/Express
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Tests
+
+```bash
+npm test                           # Karma + Jasmine
+```
